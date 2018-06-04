@@ -1,0 +1,61 @@
+body{
+    font-family:Lato;
+    background-color:red;
+}
+
+h1,h2,h3,h4,h5,h6{
+    font-family:Catamaran;font-weight:800!important
+}
+
+p{
+    font-size: 1.3em;
+}
+
+.jumbotron{
+    background-color: #fd7e14;
+}
+
+
+.game-bkgr{
+    background-color: #fd7e14;
+    border-radius: 5%;
+}
+
+.bg-circle-1 {
+    height: 90rem;
+    width: 90rem;
+    bottom: -55rem;
+    left: -55rem;
+}
+
+.bg-circle-2 {
+    z-index: 0 !important;
+    height: 50rem;
+    width: 50rem;
+    top: -25rem;
+    right: -25rem;
+}
+.bg-circle-3 {
+    height: 30rem;
+    width: 30rem;
+    bottom: -10rem;
+    /* right: 5%; */
+    right: -2rem;
+}
+
+
+.bg-circle {
+    z-index: -1;
+    position: absolute;
+    border-radius: 100%;
+    background: linear-gradient(0deg,#ee0979 0,#ff6a00 100%);
+}
+
+@media screen and (max-width: 960px ){
+
+    .bg-circle-2 {
+        z-index: -5 !important;
+       
+    }
+
+}

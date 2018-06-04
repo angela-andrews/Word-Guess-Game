@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang ="en-us">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Guess That Song</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--Bootstrap 4-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!--My Styles-->
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+    <!--Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+    <!--Scripts-->
+    <script src="assets/javascript/game.js"></script>
+</head>
+<body>
+        <div class="jumbotron text-white">
+                <h1 class="display-4">Name That Artist</h1>
+                <p class="lead">You get 12 guesses to name this popular artist.</p>
+                <hr class="my-4">
+                
+                <p class="lead">
+                        <p>Press any key to start &amp; let's go!</p>
+                </p>
+              </div>
+
+              <div class="container text-white">
+                    <div class="row align-items-center ">
+                            <div class="col-lg-6 order-lg-2 mb-2 ">
+                              <div class="p-5 game-bkgr">
+                                    
+                                            <img class="card-img-top img-fluid rounded-circle " src="assets/images/spotify-256.png" alt="song image">
+                                            <div class="card-body">
+                                              <p class="card-text">These artists sang top hits from the 70s, 80s, 90s and beyond. Let's see what you're working with.</p>
+                                            </div>
+                                          
+                                <!-- <img class="img-fluid rounded-circle" src="img/01.jpg" alt=""> -->
+                              </div>
+                            </div>
+                            <div class="col-lg-6 order-lg-1">
+                              <div class="p-5 game-bkgr">
+                                <h2 id="guess"class="display-4">_ _ _ _ _ _ _ _ </h2>
+                                <p>Wins: </p>
+                                <p><span id=guessesLeft>#</span> Guesses left: </p>
+                                <p>Letters Guessed: <span id="lettersGuessed">xx</span> </p>
+                              </div>
+                            </div>
+                          </div>
+                  </div>      
+        <section>
+                <div class="bg-circle-1 bg-circle"></div>
+                <div class="bg-circle-2 bg-circle"></div>
+                <div class="bg-circle-3 bg-circle"></div>
+               
+        </section>      
+        
+    
+</body>
+</html>

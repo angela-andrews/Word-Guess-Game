@@ -1,21 +1,20 @@
 
 //event listener on any key to start
-document.addEventListener("keypress", myFunction);
 
-function myFunction() {
-    alert("key was pressed");
-}
+
+
 
 //global Variables
 var songArtist= ""; //artist they must guess
 var songArtistLetters =[];
-var letterGuess = ""; //letter user guesses
+var letterGuess = []; //letter user guesses
 var wrongGuesses = []; //letters user got wrong
 var correctGuesses = []; //letters user got wrong
 var isMatch= false; //
 var wins= 0;
-var guesses= 12;
+var guesses= 10;
 var board = "";
+var dashArray = []; 
 
 //objects
 //create the artist object
@@ -124,15 +123,31 @@ randomArtist();
 
 var startGame = function() {
 
-     //display dashes to ID
-    board = document.getElementById('guess');
+    // guesses= 10;
+    
     for(var i = 0; songArtistLetters.length; i++)
     {
-        
-    }
+        dashArray.push("_");
+ 
+    };
+    // console.log(songArtistLetters);
+
+   //  userGuess= "";
+   //  document.onkeyup = function(event) {
+   //  userGuess = String.fromCharCode(event.which).toUpperCase();
+   //  //dashes = songArtistLetters.length;
+   //  $("#guess").html(dashArray);
+   // // $("#guess").append(userGuess);
+   //  console.log(userGuess);
+   //  console.log(dashArray);
+//}
 
 
-};
+}; //end startGame Function
+
+startGame();
+
+
 // put guesess in array and keep track of correct & incorrect guesses
 
 //correct guesses to spanID  toUpperCase & remove dashes

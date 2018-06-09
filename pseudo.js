@@ -23,9 +23,9 @@ document.onkeyup = function(event){
 
 
 
-// // for(var i= 0; i< songArtistLetters.length;i++){
-// 	for(var j=; j < dashArray.length; j++){
-//         if (songArtistLetters[i] == " "){
-//                 dashArray[i] = " ";
-//             }
-//         }
+ for(var i= 0; i< songArtistLetters.length;i++){
+	for(var j=0; j < dashArray.length; j++){
+        if (songArtistLetters[i] == " "){
+                dashArray[j] = " ";
+            }
+        }

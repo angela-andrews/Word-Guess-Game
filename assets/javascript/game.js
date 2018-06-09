@@ -16,6 +16,7 @@ var guesses= 10;
 var board = "";
 var dashArray = []; 
 var userGuess = "";
+var letter;
 
 //objects
 //create the artist object
@@ -26,10 +27,10 @@ var game= {
     correctGuesses:[],
     isMatch: false,
     wins: 0,
-    guesses: 14,
+    guesses: 17,
 
     artists:{
-        BIGDADDYKANE :{
+        "BIG DADDY KANE" :{
             name: "Big Daddy Kane",
             song: "Raw",
             track: function(){
@@ -39,7 +40,7 @@ var game= {
                 alert("get image to replace spotify image 256x256px");
             }
         },
-        CARDIB :{
+        "CARDI B" :{
             name: "Cardi B",
             song: "I Like it",
             track: function(){
@@ -49,7 +50,7 @@ var game= {
                 alert("get image to replace spotify image 256x256px");
             }
         },
-        MICHAELJACKSON:{
+        "MICHAEL JACKSON":{
             name: "Michael Jackson",
             song: "P.Y.T. (Pretty Young Thing)",
             track: function(){
@@ -59,7 +60,7 @@ var game= {
                 alert("get image to replace spotify image 256x256px");
             }
         },
-        BEYONCE:{
+        "BEYONCE":{
             name: "Beyonce",
             song: "Run the World (Girls)",
             track: function(){
@@ -69,7 +70,7 @@ var game= {
                 alert("get image to replace spotify image 256x256px");
             }
         },
-        BLACKTHOUGHT:{
+        "BLACK THOUGHT":{
             name: "Black Thought",
             song: "Dostoyevsky",
             track: function(){
@@ -79,7 +80,7 @@ var game= {
                 alert("get image to replace spotify image 256x256px");
             }
         },
-        GLADYSKNIGHT:{
+        "GLADYS KNIGHT":{
             name: "Gladys Knight",
             song: "Neither On of Us",
             track: function(){
@@ -89,7 +90,7 @@ var game= {
                 alert("get image to replace spotify image 256x256px");
             }
         },
-        AMYWINEHOUSE:{
+        "AMY WINEHOUSE":{
             name: "Amy Winehouse",
             song: "Mr. Magic",
             track: function(){
@@ -124,59 +125,50 @@ randomArtist();
 
 var startGame = function() {
 
-    guesses= 10;
+    guesses= 17;
     dashArray = [];
     letterGuess = []; 
     wrongGuesses = []; 
     correctGuesses = [];
     
         for(var i = 0; i< songArtistLetters.length; i++)     {
-dashArray.push("_");
+            dashArray.push("_");
  
-    };      console.log(songArtistLetters + " " + dashArray);  /*
------- issue--------
-    
-
-    --changed the guess append to text & dashes print with ,
-letterguess did not print.    
- --using join, the dashes print w/o
-commas, but at subsequent key presses, I get an error: Uncaught
-TypeError: dashArray.join is not a function
-
-
-*/
-    userGuess= "";
-    document.onkeyup = function(event) {
-//    userGuess = String.fromCharCode(event.which).toUpperCase();
-userGuess = event.key.toUpperCase();
-   //  //dashes = songArtistLetters.length;
-   //https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_join
-   dashArray1 = dashArray.join(' ');
+            };     
+        console.log(songArtistLetters + " " + dashArray);  
+        userGuess= "";
+        document.onkeyup = function(event) {
+            if(event.which <=90 && event.which >=48) {
+                userGuess = event.key.toUpperCase()
+                $("#lettersGuess").append(userGuess);
+            };
+        
+ 
+        dashArray1 = dashArray.join(' ');
 //_______________________________________________________
 
-
-for(var i= 0; i< songArtistLetters.length;i++){
-	for(var j=0; j < dashArray.length; j++){
-        if (songArtistLetters[i] == " "){
-                dashArray[j] = " ";
+        for(var i= 0; i< songArtistLetters.length;i++){
+                if (songArtistLetters[i] == " "){
+                        dashArray[i] = " ";     
+                    }
             }
-        }
-    }
-    $("#guess").text(dashArray1);
-    $("#lettersGuess").append(userGuess);
-        checkGuess(userGuess);
+        $("#guess").text(dashArray1);
+        
+            checkGuess(userGuess);
 
 
 } //end startGame Function
 };
 
 var checkGuess = function (userGuess){
+    letter = songArtistLetters.indexOf(userGuess);
     if(songArtistLetters.indexOf(userGuess)=== -1) {  
         wrongGuesses.push(userGuess);
         guesses--;
 
     } else{
-        correctGuesses.push(userGuess)
+        correctGuesses.push(userGuess);
+        dashArray[letter] = userGuess;
 
     }
     

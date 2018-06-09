@@ -7,32 +7,33 @@
 //global Variables
 var songArtist= ""; //artist they must guess
 var songArtistLetters =[];
-var letterGuess = []; //letter user guesses
+var lettersGuessed = []; //letter user guesses
 var wrongGuesses = []; //letters user got wrong
 var correctGuesses = []; //letters user got wrong
 var isMatch= false; //
 var wins= 0;
-var guesses= 10;
+var guesses= 12;
 var board = "";
 var dashArray = []; 
 var userGuess = "";
 var letter;
+var wrong;
 
 //objects
 //create the artist object
 
 var game= {
-    letterGuess: "",
+    lettersGuessed: "",
     wrongGuesses:[],
     correctGuesses:[],
     isMatch: false,
     wins: 0,
-    guesses: 17,
+    guesses: 12,
 
     artists:{
-        "BIG DADDY KANE" :{
-            name: "Big Daddy Kane",
-            song: "Raw",
+        "MANTRONIX" :{
+            name: "Mantronix",
+            song: "Fresh Is the Word",
             track: function(){
                 alert("get song to play");
             },
@@ -40,9 +41,9 @@ var game= {
                 alert("get image to replace spotify image 256x256px");
             }
         },
-        "CARDI B" :{
-            name: "Cardi B",
-            song: "I Like it",
+        "PRINCE" :{
+            name: "Prince",
+            song: "Kiss",
             track: function(){
                 alert("get song to play");
             },
@@ -50,9 +51,9 @@ var game= {
                 alert("get image to replace spotify image 256x256px");
             }
         },
-        "MICHAEL JACKSON":{
-            name: "Michael Jackson",
-            song: "P.Y.T. (Pretty Young Thing)",
+        "BRANDY":{
+            name: "Brandy",
+            song: "I Wanna Be Down",
             track: function(){
                 alert("get song to play");
             },
@@ -70,9 +71,9 @@ var game= {
                 alert("get image to replace spotify image 256x256px");
             }
         },
-        "BLACK THOUGHT":{
-            name: "Black Thought",
-            song: "Dostoyevsky",
+        "RIHANNA":{
+            name: "Rihanna",
+            song: "Bitch Better Have My Money",
             track: function(){
                 alert("get song to play");
             },
@@ -80,9 +81,9 @@ var game= {
                 alert("get image to replace spotify image 256x256px");
             }
         },
-        "GLADYS KNIGHT":{
-            name: "Gladys Knight",
-            song: "Neither On of Us",
+        "LEDISI":{
+            name: "Lesdisi",
+            song: "Pieces Of Me",
             track: function(){
                 alert("get song to play");
             },
@@ -90,9 +91,9 @@ var game= {
                 alert("get image to replace spotify image 256x256px");
             }
         },
-        "AMY WINEHOUSE":{
-            name: "Amy Winehouse",
-            song: "Mr. Magic",
+        "EMINEM":{
+            name: "Eminem",
+            song: "\'Till I Collapse",
             track: function(){
                 alert("get song to play");
             },
@@ -140,21 +141,23 @@ var startGame = function() {
         document.onkeyup = function(event) {
             if(event.which <=90 && event.which >=48) {
                 userGuess = event.key.toUpperCase()
-                $("#lettersGuess").append(userGuess);
+
+                checkGuess(userGuess);
+                // $("#lettersGuessed").append(userGuess);
             };
         
  
         dashArray1 = dashArray.join(' ');
 //_______________________________________________________
 
-        for(var i= 0; i< songArtistLetters.length;i++){
-                if (songArtistLetters[i] == " "){
-                        dashArray[i] = " ";     
-                    }
-            }
+        // for(var i= 0; i< songArtistLetters.length;i++){
+        //         if (songArtistLetters[i] == " "){
+        //                 dashArray[i] = " ";     
+        //             }
+            // }
         $("#guess").text(dashArray1);
         
-            checkGuess(userGuess);
+            
 
 
 } //end startGame Function
@@ -164,6 +167,8 @@ var checkGuess = function (userGuess){
     letter = songArtistLetters.indexOf(userGuess);
     if(songArtistLetters.indexOf(userGuess)=== -1) {  
         wrongGuesses.push(userGuess);
+        wrong = userGuess
+        $("#lettersGuessed").append(wrong);
         guesses--;
 
     } else{

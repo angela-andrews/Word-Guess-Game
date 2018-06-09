@@ -26,7 +26,7 @@ var game= {
     correctGuesses:[],
     isMatch: false,
     wins: 0,
-    guesses: 10,
+    guesses: 14,
 
     artists:{
         BIGDADDYKANE :{
@@ -147,13 +147,24 @@ TypeError: dashArray.join is not a function
 */
     userGuess= "";
     document.onkeyup = function(event) {
-   userGuess = String.fromCharCode(event.which).toUpperCase();
+//    userGuess = String.fromCharCode(event.which).toUpperCase();
+userGuess = event.key.toUpperCase();
    //  //dashes = songArtistLetters.length;
    //https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_join
-   dashArray = dashArray.join(' ');
-    $("#guess").text(dashArray);
-    $("#letterGuess").html(userGuess);
+   dashArray1 = dashArray.join(' ');
+//_______________________________________________________
 
+
+for(var i= 0; i< songArtistLetters.length;i++){
+	for(var j=0; j < dashArray.length; j++){
+        if (songArtistLetters[i] == " "){
+                dashArray[j] = " ";
+            }
+        }
+    }
+    $("#guess").text(dashArray1);
+    $("#lettersGuess").append(userGuess);
+        checkGuess(userGuess);
 
 
 } //end startGame Function

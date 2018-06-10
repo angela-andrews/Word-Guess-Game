@@ -18,6 +18,7 @@ var dashArray = [];
 var userGuess = "";
 var letter;
 var wrong;
+var numBlanks= 0;
 
 //objects
 //create the artist object
@@ -28,7 +29,7 @@ var game= {
     correctGuesses:[],
     isMatch: false,
     wins: 0,
-    guesses: 12,
+    guesses: 0,
 
     artists:{
         "MANTRONIX" :{
@@ -82,7 +83,7 @@ var game= {
             }
         },
         "LEDISI":{
-            name: "Lesdisi",
+            name: "Ledisi",
             song: "Pieces Of Me",
             track: function(){
                 alert("get song to play");
@@ -126,7 +127,7 @@ randomArtist();
 
 var startGame = function() {
 
-    guesses= 17;
+    guesses= 13;
     dashArray = [];
     letterGuess = []; 
     wrongGuesses = []; 
@@ -143,18 +144,12 @@ var startGame = function() {
                 userGuess = event.key.toUpperCase()
 
                 checkGuess(userGuess);
-                // $("#lettersGuessed").append(userGuess);
+              
             };
         
  
         dashArray1 = dashArray.join(' ');
-//_______________________________________________________
 
-        // for(var i= 0; i< songArtistLetters.length;i++){
-        //         if (songArtistLetters[i] == " "){
-        //                 dashArray[i] = " ";     
-        //             }
-            // }
         $("#guess").text(dashArray1);
         
             
@@ -164,21 +159,41 @@ var startGame = function() {
 };
 
 var checkGuess = function (userGuess){
+    numBlanks = songArtistLetters.length;
     letter = songArtistLetters.indexOf(userGuess);
     if(songArtistLetters.indexOf(userGuess)=== -1) {  
         wrongGuesses.push(userGuess);
         wrong = userGuess
         $("#lettersGuessed").append(wrong);
+        isMatch=false;
         guesses--;
+        console.log("Letter: " + letter + " | Wrong: "+ wrong);
+        console.log("Guesses Left: "+ guesses);
 
     } else{
         correctGuesses.push(userGuess);
-        dashArray[letter] = userGuess;
+        guesses--;
+        isMatch=true;
+        if(isMatch){
+            for(var j =0; j < numBlanks; j++){
+                if(songArtist[j]=== userGuess){
+                    dashArray[j] = userGuess;
+                }
+            }
+        
+    console.log("Song Artist:"+ songArtist +"| Dash Array: "+ dashArray);
+    console.log("User Guess: "+ userGuess+ " | Is match: " + isMatch);
+    // console.log("Letter: " + letter + " | Wrong: "+ wrong);
+    console.log("Guesses Left: "+ guesses);
+        
+        
+        // dashArray[letter] = userGuess;
 
     }
+};//end of checkGuess Function
     
 
-}; //end of checkGuess Function
+ }; 
 
 startGame(); 
 

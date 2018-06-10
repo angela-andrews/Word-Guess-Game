@@ -33,7 +33,7 @@ var game= {
 
     artists:{
         "MANTRONIX" :{
-            name: "Mantronix",
+            name: "MANTRONIX",
             song: "Fresh Is the Word",
             track: function(){
                 alert("get song to play");
@@ -43,7 +43,7 @@ var game= {
             }
         },
         "PRINCE" :{
-            name: "Prince",
+            name: "PRINCE",
             song: "Kiss",
             track: function(){
                 alert("get song to play");
@@ -53,7 +53,7 @@ var game= {
             }
         },
         "BRANDY":{
-            name: "Brandy",
+            name: "BRANDY",
             song: "I Wanna Be Down",
             track: function(){
                 alert("get song to play");
@@ -63,7 +63,7 @@ var game= {
             }
         },
         "BEYONCE":{
-            name: "Beyonce",
+            name: "BEYONCE",
             song: "Run the World (Girls)",
             track: function(){
                 alert("get song to play");
@@ -73,7 +73,7 @@ var game= {
             }
         },
         "RIHANNA":{
-            name: "Rihanna",
+            name: "RIHANNA",
             song: "Bitch Better Have My Money",
             track: function(){
                 alert("get song to play");
@@ -93,7 +93,7 @@ var game= {
             }
         },
         "EMINEM":{
-            name: "Eminem",
+            name: "EMINEM",
             song: "\'Till I Collapse",
             track: function(){
                 alert("get song to play");
@@ -123,16 +123,24 @@ var randomArtist =  function(){
     songArtistLetters = songArtist.split("");
     //console.log(songArtistLetters);
 };
-randomArtist();
 
-var startGame = function() {
+
+var startGame = function() { 
 
     guesses= 13;
     dashArray = [];
-    letterGuess = []; 
+    lettersGuessed = []; 
     wrongGuesses = []; 
     correctGuesses = [];
+    //------
+    isMatch= false;
+    userGuess = "";
+    letter;
+    wrong = 0;
+    numBlanks= 0;
     
+
+    randomArtist();//function call 
         for(var i = 0; i< songArtistLetters.length; i++)     {
             dashArray.push("_");
  
@@ -143,7 +151,7 @@ var startGame = function() {
             if(event.which <=90 && event.which >=48) {
                 userGuess = event.key.toUpperCase()
 
-                checkGuess(userGuess);
+                checkGuess(userGuess); //function call
               
             };
         
@@ -169,10 +177,15 @@ var checkGuess = function (userGuess){
         guesses--;
         console.log("Letter: " + letter + " | Wrong: "+ wrong);
         console.log("Guesses Left: "+ guesses);
+        $("#guessesLeft").text(guesses);
+        if(guesses ===0) {
+            roundComplete();
+        }
 
     } else{
         correctGuesses.push(userGuess);
         guesses--;
+        $("#guessesLeft").text(guesses);
         isMatch=true;
         if(isMatch){
             for(var j =0; j < numBlanks; j++){
@@ -181,37 +194,75 @@ var checkGuess = function (userGuess){
                 }
             }
         
-    console.log("Song Artist:"+ songArtist +"| Dash Array: "+ dashArray);
+    console.log("Song Artist:"+ songArtist );
     console.log("User Guess: "+ userGuess+ " | Is match: " + isMatch);
-    // console.log("Letter: " + letter + " | Wrong: "+ wrong);
+
     console.log("Guesses Left: "+ guesses);
+    console.log("DashArray(): "+ dashArray +" SongArtistLetters():" +songArtistLetters);
+    
+            
         
-        
-        // dashArray[letter] = userGuess;
 
     }
-};//end of checkGuess Function
-    
-
- }; 
-
-startGame(); 
-
-
-// put guesess in array and keep track of correct & incorrect guesses
-
-//correct guesses to spanID  toUpperCase & remove dashes
-
-//incorrect guesses to spanID 
+};
+            var sal = songArtistLetters.join(' ');
+            var  da= dashArray.join(' ');
+            if(sal === da){
+                console.log(sal + " " + da);
+                
+                roundComplete();
+            }
 
 
-/*
+ }; //end of checkGuess Function
+ function roundComplete(){
 
+    if(guesses ===0) {
+        console.log("You lose");
+        //pause and place artist name and photo
+                
+        //startGame();  
+    }else if(guesses!==0)  {
+        wins++;  
+        $("#wins").text(wins);
+        console.log("Win Count: " + wins + "| You Win!!");
+        setTimeout(startGame, 20*1000);
+        console.log(songArtist + "change image");
+        switch(songArtist){
+            case 0:
+                songArtist === game.artists.BRANDY.name;
+                $("img").attr("src", "assets/images/brandy.jpg");
+                break;
+            case 1:
+            songArtist === game.artists.BEYONCE.name;
+                $("img").attr("src", "assets/images/beyonce.jpg");
+                break;
+            case 2:
+                songArtist === game.artists.MANTRONIX.name;
+                $("img").attr("src").replace("assets/images/spotify-256.png", "assets/images/mantronix.jpg");
+                break;
+            case 3:
+                songArtist === game.artists.EMINEM.name;
+                $("img").attr("src").replace("assets/images/spotify-256.png", "assets/images/mm.jpg");
+                break;
+            case 4:
+                songArtist === game.artists.RIHANNA.name;
+                $("img").attr("src").replace("assets/images/spotify-256.png", "assets/images/rihanna.jpg");
+                break;
+            case 5:
+                songArtist === game.artists.LEDISI.name;
+                $("img").attr("src").replace("assets/images/spotify-256.png", "assets/images/ledisi");
+                break;
+            case 6:
+                songArtist === game.artists.PRINCE.name;
+                $("img").attr("src").replace("assets/images/spotify-256.png", "assets/images/prince.jpg");
+                
 
-event listerns on keys player enters to guess
+        } //end switch
+        // //pause and place artist name and photo & play song
+        startGame(); 
+    }
+    $("#lettersGuessed").html("");
+ }
+startGame(); //function call
 
-add letters to spanID  toUpperCase & remove dashes
-
-add wrong guesses to span toUpperCase
-
-*/

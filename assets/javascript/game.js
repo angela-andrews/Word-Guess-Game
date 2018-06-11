@@ -226,41 +226,41 @@ var checkGuess = function (userGuess){
         wins++;  
         $("#wins").text(wins);
         console.log("Win Count: " + wins + "| You Win!!");
-        setTimeout(startGame, 20*1000);
+        setTimeout(startGame, 5*1000);
         console.log(songArtist + "change image");
         switch(songArtist){
-            case 0:
-                songArtist === game.artists.BRANDY.name;
+            case "BRANDY":
+                
                 $("img").attr("src", "assets/images/brandy.jpg");
                 break;
-            case 1:
-            songArtist === game.artists.BEYONCE.name;
+            case "BEYONCE":
+            
                 $("img").attr("src", "assets/images/beyonce.jpg");
                 break;
-            case 2:
-                songArtist === game.artists.MANTRONIX.name;
-                $("img").attr("src").replace("assets/images/spotify-256.png", "assets/images/mantronix.jpg");
+            case "MANTRONIX":
+                
+                $("img").attr("src","assets/images/mantronix.jpg");
                 break;
-            case 3:
-                songArtist === game.artists.EMINEM.name;
-                $("img").attr("src").replace("assets/images/spotify-256.png", "assets/images/mm.jpg");
+            case "EMINEM":
+                
+                $("img").attr("src", "assets/images/mm.jpg");
                 break;
-            case 4:
-                songArtist === game.artists.RIHANNA.name;
-                $("img").attr("src").replace("assets/images/spotify-256.png", "assets/images/rihanna.jpg");
+            case "RIHANNA":
+                
+                $("img").attr("src", "assets/images/rihanna.jpg");
                 break;
-            case 5:
-                songArtist === game.artists.LEDISI.name;
-                $("img").attr("src").replace("assets/images/spotify-256.png", "assets/images/ledisi");
+            case "LEDISI":
+               
+                $("img").attr("src", "assets/images/ledisi.jpg");
                 break;
-            case 6:
-                songArtist === game.artists.PRINCE.name;
-                $("img").attr("src").replace("assets/images/spotify-256.png", "assets/images/prince.jpg");
+            case "PRINCE":
+                
+                $("IMG").attr("src", "assets/images/prince.jpg");
                 
 
         } //end switch
         // //pause and place artist name and photo & play song
-        startGame(); 
+       
     }
     $("#lettersGuessed").html("");
  }

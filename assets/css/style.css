@@ -51,6 +51,15 @@ p{
     background: linear-gradient(0deg,#ee0979 0,#ff6a00 100%);
 }
 
+.pause {
+    background-color: #e84f01;
+    color: white;
+    display:none;
+
+}
+
+    
+
 @media screen and (max-width: 960px ){
 
     .bg-circle-2 {

@@ -19,6 +19,8 @@ var userGuess = "";
 var letter;
 var wrong;
 var numBlanks= 0;
+var audioElement;
+
 
 //objects
 //create the artist object
@@ -36,70 +38,63 @@ var game= {
             name: "MANTRONIX",
             song: "Fresh Is the Word",
             track: function(){
-                alert("get song to play");
-            },
-            image: function(){
-                alert("get image to replace spotify image 256x256px");
+                audioElement = document.createElement("audio");
+                audioElement.setAttribute("src", "assets/audio/mantronix.m4a");
+                audioElement.play();
             }
         },
         "PRINCE" :{
             name: "PRINCE",
             song: "Kiss",
             track: function(){
-                alert("get song to play");
-            },
-            image: function(){
-                alert("get image to replace spotify image 256x256px");
+                audioElement = document.createElement("audio");
+                audioElement.setAttribute("src", "assets/audio/kiss.m4a");
+                audioElement.play();
             }
         },
         "BRANDY":{
             name: "BRANDY",
             song: "I Wanna Be Down",
             track: function(){
-                alert("get song to play");
-            },
-            image: function(){
-                alert("get image to replace spotify image 256x256px");
+                audioElement = document.createElement("audio");
+                audioElement.setAttribute("src", "assets/audio/iwannabedown.m4a");
+                audioElement.play();
             }
         },
         "BEYONCE":{
             name: "BEYONCE",
             song: "Run the World (Girls)",
             track: function(){
-                alert("get song to play");
-            },
-            image: function(){
-                alert("get image to replace spotify image 256x256px");
+                audioElement = document.createElement("audio");
+                audioElement.setAttribute("src", "assets/audio/runtheworld.m4a");
+                audioElement.play();
             }
         },
         "RIHANNA":{
             name: "RIHANNA",
             song: "Bitch Better Have My Money",
             track: function(){
-                alert("get song to play");
-            },
-            image: function(){
-                alert("get image to replace spotify image 256x256px");
+                audioElement = document.createElement("audio");
+                audioElement.setAttribute("src", "assets/audio/bitchbetter.m4a");
+                audioElement.play();
             }
         },
         "LEDISI":{
             name: "Ledisi",
             song: "Pieces Of Me",
             track: function(){
-                alert("get song to play");
-            },
-            image: function(){
-                alert("get image to replace spotify image 256x256px");
+                audioElement = document.createElement("audio");
+                audioElement.setAttribute("src", "assets/audio/piecesofme.m4a");//
+                audioElement.play();
             }
         },
         "EMINEM":{
             name: "EMINEM",
             song: "\'Till I Collapse",
             track: function(){
-                alert("get song to play");
-            },
-            image: function(){
-                alert("get image to replace spotify image 256x256px");
+                audioElement = document.createElement("audio");
+                audioElement.setAttribute("src", "assets/audio/tillicollapse.m4a");
+                audioElement.play();
             }
         }
 
@@ -216,50 +211,53 @@ var checkGuess = function (userGuess){
 
  }; //end of checkGuess Function
  function roundComplete(){
-
+    $(".pause").show();
+    $(".pause").on("click", function() {
+        audioElement.pause();
+      });
+    
     if(guesses ===0) {
         console.log("You lose");
-        //pause and place artist name and photo
-                
-        //startGame();  
+          
     }else if(guesses!==0)  {
         wins++;  
         $("#wins").text(wins);
         console.log("Win Count: " + wins + "| You Win!!");
-        setTimeout(startGame, 5*1000);
-        console.log(songArtist + "change image");
+        setTimeout(startGame, 10*1000);
+        
+        
         switch(songArtist){
             case "BRANDY":
-                
                 $("img").attr("src", "assets/images/brandy.jpg");
+                game.artists.BRANDY.track();
                 break;
             case "BEYONCE":
-            
                 $("img").attr("src", "assets/images/beyonce.jpg");
+                game.artists.BEYONCE.track();
                 break;
             case "MANTRONIX":
-                
                 $("img").attr("src","assets/images/mantronix.jpg");
+                game.artists.MANTRONIX.track();
                 break;
             case "EMINEM":
-                
                 $("img").attr("src", "assets/images/mm.jpg");
+                game.artists.EMINEM.track();
                 break;
             case "RIHANNA":
-                
-                $("img").attr("src", "assets/images/rihanna.jpg");
+                 $("img").attr("src", "assets/images/rihanna.jpg");
+                game.artists.RIHANNA.track();
                 break;
             case "LEDISI":
-               
                 $("img").attr("src", "assets/images/ledisi.jpg");
+                game.artists.LEDISI.track();
                 break;
             case "PRINCE":
-                
                 $("IMG").attr("src", "assets/images/prince.jpg");
+                game.artists.PRINCE.track();
                 
 
         } //end switch
-        // //pause and place artist name and photo & play song
+       
        
     }
     $("#lettersGuessed").html("");
